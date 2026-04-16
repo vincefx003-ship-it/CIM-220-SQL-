@@ -1,0 +1,561 @@
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| EMPLOYEES          |
+| dvwa               |
+| e_commerce         |
+| employees          |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| school             |
+| sys                |
++--------------------+
+10 rows in set (0.003 sec)
+
+MariaDB [(none)]> CREATE DATABASE movie_show;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> USE movie_show;
+Database changed
+MariaDB [movie_show]> CREATE TABLE directors (
+    ->     director_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    ->     first_name VARCHAR(40),
+    ->     last_name VARCHAR(40),
+    ->     country VARCHAR(80)
+    -> );
+Query OK, 0 rows affected (0.018 sec)
+
+MariaDB [movie_show]> CREATE TABLE movies (
+    ->     movie_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    ->     title VARCHAR(120),
+    ->     year_released INTEGER,
+    ->     director_id INTEGER,
+    ->     FOREIGN KEY (director_id) REFERENCES directors(director_id)
+    -> );
+Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [movie_show]> INSERT INTO directors (first_name, last_name, country)
+    -> VALUES ("John", "Lasseter", "USA");
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [movie_show]> INSERT INTO directors (first_name, last_name, country)
+    -> VALUES ("Brad", "Bird", "USA");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO directors (first_name, last_name, country)
+    -> VALUES ("Ang", "Lee", "Taiwan");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> insert into directors (first_name, last_name, country)
+    -> values ("Alfonso", "Cuarón", "Mexico");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> insert into directors (first_name, last_name, country)
+    -> values ("Guillermo", "del Toro", "Mexico");
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [movie_show]> INSERT INTO directors (first_name, last_name, country)
+    -> VALUES ("Jodie", "Foster", "USA"); 
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> insert into directors (first_name, last_name, country)
+    -> values ("Peter", "Jackson", "New Zealand");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> insert into directors (first_name, last_name, country)
+    -> values ("Ava", "DuVernay", "USA");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> insert into directors (first_name, last_name, country)
+    -> values ("Patty", "Jenkins", "USA");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> insert into directors (first_name, last_name, country)
+    -> values ("Haifaa", "al-Mansour", "Saudi Arabia");
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> SELECT *FROM directors;
++-------------+------------+------------+--------------+
+| director_id | first_name | last_name  | country      |
++-------------+------------+------------+--------------+
+|           1 | John       | Lasseter   | USA          |
+|           2 | Brad       | Bird       | USA          |
+|           3 | Ang        | Lee        | Taiwan       |
+|           4 | Alfonso    | Cuarón     | Mexico       |
+|           5 | Guillermo  | del Toro   | Mexico       |
+|           6 | Jodie      | Foster     | USA          |
+|           7 | Peter      | Jackson    | New Zealand  |
+|           8 | Ava        | DuVernay   | USA          |
+|           9 | Patty      | Jenkins    | USA          |
+|          10 | Haifaa     | al-Mansour | Saudi Arabia |
++-------------+------------+------------+--------------+
+10 rows in set (0.001 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Toy Story", 1995, 1);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("The Incredibles", 2004, 2);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Money Monster", 2016, 3);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("A Bug's Life", 1998, 1);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Crouching Tiger, Hidden Dragon", 2000, 4);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> 
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Harry Potter and the Prisoner of Azkaban", 2004, 5);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Little Man Tate", 1991, 3);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Roma", 2018, 5);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("The Perfect Candidate", 2019, 10);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("The Shape of Water", 2017, 6);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("The Lord of the Rings: The Return of the King", 2003, 7);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("A Wrinke in Time", 2018, 8);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Wonder Woman", 2017, 9);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Ratatouille", 2007, 2);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Mary Shelley", 2017, 10);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ("Selma", 2014, 8);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [movie_show]> SELECT *FROM movies;
++----------+-----------------------------------------------+---------------+-------------+
+| movie_id | title                                         | year_released | director_id |
++----------+-----------------------------------------------+---------------+-------------+
+|        1 | Toy Story                                     |          1995 |           1 |
+|        2 | The Incredibles                               |          2004 |           2 |
+|        3 | Money Monster                                 |          2016 |           3 |
+|        4 | A Bug's Life                                  |          1998 |           1 |
+|        5 | Crouching Tiger, Hidden Dragon                |          2000 |           4 |
+|        6 | Harry Potter and the Prisoner of Azkaban      |          2004 |           5 |
+|        7 | Little Man Tate                               |          1991 |           3 |
+|        8 | Roma                                          |          2018 |           5 |
+|        9 | The Perfect Candidate                         |          2019 |          10 |
+|       10 | The Shape of Water                            |          2017 |           6 |
+|       11 | The Lord of the Rings: The Return of the King |          2003 |           7 |
+|       12 | A Wrinke in Time                              |          2018 |           8 |
+|       13 | Wonder Woman                                  |          2017 |           9 |
+|       14 | Ratatouille                                   |          2007 |           2 |
+|       15 | Mary Shelley                                  |          2017 |          10 |
+|       16 | Selma                                         |          2014 |           8 |
++----------+-----------------------------------------------+---------------+-------------+
+16 rows in set (0.000 sec)
+
+MariaDB [movie_show]> SELECT title FROM movies;
++-----------------------------------------------+
+| title                                         |
++-----------------------------------------------+
+| Toy Story                                     |
+| The Incredibles                               |
+| Money Monster                                 |
+| A Bug's Life                                  |
+| Crouching Tiger, Hidden Dragon                |
+| Harry Potter and the Prisoner of Azkaban      |
+| Little Man Tate                               |
+| Roma                                          |
+| The Perfect Candidate                         |
+| The Shape of Water                            |
+| The Lord of the Rings: The Return of the King |
+| A Wrinke in Time                              |
+| Wonder Woman                                  |
+| Ratatouille                                   |
+| Mary Shelley                                  |
+| Selma                                         |
++-----------------------------------------------+
+16 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT title, year_released
+    -> FROM movies
+    -> ORDER BY year_released DESC;
++-----------------------------------------------+---------------+
+| title                                         | year_released |
++-----------------------------------------------+---------------+
+| The Perfect Candidate                         |          2019 |
+| A Wrinke in Time                              |          2018 |
+| Roma                                          |          2018 |
+| Mary Shelley                                  |          2017 |
+| Wonder Woman                                  |          2017 |
+| The Shape of Water                            |          2017 |
+| Money Monster                                 |          2016 |
+| Selma                                         |          2014 |
+| Ratatouille                                   |          2007 |
+| Harry Potter and the Prisoner of Azkaban      |          2004 |
+| The Incredibles                               |          2004 |
+| The Lord of the Rings: The Return of the King |          2003 |
+| Crouching Tiger, Hidden Dragon                |          2000 |
+| A Bug's Life                                  |          1998 |
+| Toy Story                                     |          1995 |
+| Little Man Tate                               |          1991 |
++-----------------------------------------------+---------------+
+16 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT *
+    -> FROM directors
+    -> ORDER BY country ASC;
++-------------+------------+------------+--------------+
+| director_id | first_name | last_name  | country      |
++-------------+------------+------------+--------------+
+|           4 | Alfonso    | Cuarón     | Mexico       |
+|           5 | Guillermo  | del Toro   | Mexico       |
+|           7 | Peter      | Jackson    | New Zealand  |
+|          10 | Haifaa     | al-Mansour | Saudi Arabia |
+|           3 | Ang        | Lee        | Taiwan       |
+|           1 | John       | Lasseter   | USA          |
+|           2 | Brad       | Bird       | USA          |
+|           6 | Jodie      | Foster     | USA          |
+|           8 | Ava        | DuVernay   | USA          |
+|           9 | Patty      | Jenkins    | USA          |
++-------------+------------+------------+--------------+
+10 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT *
+    -> FROM directors
+    -> ^C
+MariaDB [movie_show]> SELECT *FROM directors
+    -> ORDER BY country ASC, last_name ASC;
++-------------+------------+------------+--------------+
+| director_id | first_name | last_name  | country      |
++-------------+------------+------------+--------------+
+|           4 | Alfonso    | Cuarón     | Mexico       |
+|           5 | Guillermo  | del Toro   | Mexico       |
+|           7 | Peter      | Jackson    | New Zealand  |
+|          10 | Haifaa     | al-Mansour | Saudi Arabia |
+|           3 | Ang        | Lee        | Taiwan       |
+|           2 | Brad       | Bird       | USA          |
+|           8 | Ava        | DuVernay   | USA          |
+|           6 | Jodie      | Foster     | USA          |
+|           9 | Patty      | Jenkins    | USA          |
+|           1 | John       | Lasseter   | USA          |
++-------------+------------+------------+--------------+
+10 rows in set (0.001 sec)
+
+MariaDB [movie_show]> INSERT INTO directors (first_name, last_name, country)
+    -> VALUES ('Rob', 'Reiner', 'USA');
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> SELECT last_name, director_id FROM directors
+    -> WHERE first_name = 'Rob' AND last_name = 'Reiner';
++-----------+-------------+
+| last_name | director_id |
++-----------+-------------+
+| Reiner    |          11 |
++-----------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [movie_show]> INSERT INTO movies (title, year_released, director_id)
+    -> VALUES ('The Princess Bride', 1987, 
+    ->     (SELECT director_id FROM directors 
+    ->      WHERE first_name = 'Rob' AND last_name = 'Reiner')
+    -> );
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> SELECT m.title, m.year_released, d.last_name FROM movies m
+    -> INNER JOIN directors d
+    -> ON m.director_id = d.director_id;
++-----------------------------------------------+---------------+------------+
+| title                                         | year_released | last_name  |
++-----------------------------------------------+---------------+------------+
+| Toy Story                                     |          1995 | Lasseter   |
+| The Incredibles                               |          2004 | Bird       |
+| Money Monster                                 |          2016 | Lee        |
+| A Bug's Life                                  |          1998 | Lasseter   |
+| Crouching Tiger, Hidden Dragon                |          2000 | Cuarón     |
+| Harry Potter and the Prisoner of Azkaban      |          2004 | del Toro   |
+| Little Man Tate                               |          1991 | Lee        |
+| Roma                                          |          2018 | del Toro   |
+| The Perfect Candidate                         |          2019 | al-Mansour |
+| The Shape of Water                            |          2017 | Foster     |
+| The Lord of the Rings: The Return of the King |          2003 | Jackson    |
+| A Wrinke in Time                              |          2018 | DuVernay   |
+| Wonder Woman                                  |          2017 | Jenkins    |
+| Ratatouille                                   |          2007 | Bird       |
+| Mary Shelley                                  |          2017 | al-Mansour |
+| Selma                                         |          2014 | DuVernay   |
+| The Princess Bride                            |          1987 | Reiner     |
++-----------------------------------------------+---------------+------------+
+17 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT m.title, m.year_released, d.first_name, d.last_name FROM movies m
+    -> INNER JOIN directors d ON m.director_id = d.director_id
+    -> ORDER BY  d.last_name ASC;
++-----------------------------------------------+---------------+------------+------------+
+| title                                         | year_released | first_name | last_name  |
++-----------------------------------------------+---------------+------------+------------+
+| Mary Shelley                                  |          2017 | Haifaa     | al-Mansour |
+| The Perfect Candidate                         |          2019 | Haifaa     | al-Mansour |
+| The Incredibles                               |          2004 | Brad       | Bird       |
+| Ratatouille                                   |          2007 | Brad       | Bird       |
+| Crouching Tiger, Hidden Dragon                |          2000 | Alfonso    | Cuarón     |
+| Harry Potter and the Prisoner of Azkaban      |          2004 | Guillermo  | del Toro   |
+| Roma                                          |          2018 | Guillermo  | del Toro   |
+| Selma                                         |          2014 | Ava        | DuVernay   |
+| A Wrinke in Time                              |          2018 | Ava        | DuVernay   |
+| The Shape of Water                            |          2017 | Jodie      | Foster     |
+| The Lord of the Rings: The Return of the King |          2003 | Peter      | Jackson    |
+| Wonder Woman                                  |          2017 | Patty      | Jenkins    |
+| Toy Story                                     |          1995 | John       | Lasseter   |
+| A Bug's Life                                  |          1998 | John       | Lasseter   |
+| Little Man Tate                               |          1991 | Ang        | Lee        |
+| Money Monster                                 |          2016 | Ang        | Lee        |
+| The Princess Bride                            |          1987 | Rob        | Reiner     |
++-----------------------------------------------+---------------+------------+------------+
+17 rows in set (0.009 sec)
+
+MariaDB [movie_show]> SELECT first_name, last_name FROM directors
+    -> WHERE director_id = (SELECT director_id FROM movies WHERE title = 'The Incredibles'
+    -> );
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| Brad       | Bird      |
++------------+-----------+
+1 row in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT d.last_name, d.country FROM movies m 
+    -> JOIN directors d ON m.director_id = d.director_id 
+    -> WHERE m.title = 'Roma';
++-----------+---------+
+| last_name | country |
++-----------+---------+
+| del Toro  | Mexico  |
++-----------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [movie_show]> DELETE FROM movies
+    -> WHERE movie_id = 1;
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [movie_show]> SELECT *FROM movies;
++----------+-----------------------------------------------+---------------+-------------+
+| movie_id | title                                         | year_released | director_id |
++----------+-----------------------------------------------+---------------+-------------+
+|        2 | The Incredibles                               |          2004 |           2 |
+|        3 | Money Monster                                 |          2016 |           3 |
+|        4 | A Bug's Life                                  |          1998 |           1 |
+|        5 | Crouching Tiger, Hidden Dragon                |          2000 |           4 |
+|        6 | Harry Potter and the Prisoner of Azkaban      |          2004 |           5 |
+|        7 | Little Man Tate                               |          1991 |           3 |
+|        8 | Roma                                          |          2018 |           5 |
+|        9 | The Perfect Candidate                         |          2019 |          10 |
+|       10 | The Shape of Water                            |          2017 |           6 |
+|       11 | The Lord of the Rings: The Return of the King |          2003 |           7 |
+|       12 | A Wrinke in Time                              |          2018 |           8 |
+|       13 | Wonder Woman                                  |          2017 |           9 |
+|       14 | Ratatouille                                   |          2007 |           2 |
+|       15 | Mary Shelley                                  |          2017 |          10 |
+|       16 | Selma                                         |          2014 |           8 |
+|       17 | The Princess Bride                            |          1987 |          11 |
++----------+-----------------------------------------------+---------------+-------------+
+16 rows in set (0.000 sec)
+
+MariaDB [movie_show]> SELECT *FROM directors;
++-------------+------------+------------+--------------+
+| director_id | first_name | last_name  | country      |
++-------------+------------+------------+--------------+
+|           1 | John       | Lasseter   | USA          |
+|           2 | Brad       | Bird       | USA          |
+|           3 | Ang        | Lee        | Taiwan       |
+|           4 | Alfonso    | Cuarón     | Mexico       |
+|           5 | Guillermo  | del Toro   | Mexico       |
+|           6 | Jodie      | Foster     | USA          |
+|           7 | Peter      | Jackson    | New Zealand  |
+|           8 | Ava        | DuVernay   | USA          |
+|           9 | Patty      | Jenkins    | USA          |
+|          10 | Haifaa     | al-Mansour | Saudi Arabia |
+|          11 | Rob        | Reiner     | USA          |
++-------------+------------+------------+--------------+
+11 rows in set (0.000 sec)
+
+MariaDB [movie_show]> DELETE FROM directors WHERE director_id = 1;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`movie_show`.`movies`, CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`director_id`) REFERENCES `directors` (`director_id`))
+MariaDB [movie_show]> SELECT m.title AS MovieTitle, d.last_name AS Director FROM movies m
+    -> JOIN directors d ON m.director_id = d.director_id;
++-----------------------------------------------+------------+
+| MovieTitle                                    | Director   |
++-----------------------------------------------+------------+
+| The Incredibles                               | Bird       |
+| Money Monster                                 | Lee        |
+| A Bug's Life                                  | Lasseter   |
+| Crouching Tiger, Hidden Dragon                | Cuarón     |
+| Harry Potter and the Prisoner of Azkaban      | del Toro   |
+| Little Man Tate                               | Lee        |
+| Roma                                          | del Toro   |
+| The Perfect Candidate                         | al-Mansour |
+| The Shape of Water                            | Foster     |
+| The Lord of the Rings: The Return of the King | Jackson    |
+| A Wrinke in Time                              | DuVernay   |
+| Wonder Woman                                  | Jenkins    |
+| Ratatouille                                   | Bird       |
+| Mary Shelley                                  | al-Mansour |
+| Selma                                         | DuVernay   |
+| The Princess Bride                            | Reiner     |
++-----------------------------------------------+------------+
+16 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT d.first_name AS First, d.country AS Origin FROM directors d;
++-----------+--------------+
+| First     | Origin       |
++-----------+--------------+
+| John      | USA          |
+| Brad      | USA          |
+| Ang       | Taiwan       |
+| Alfonso   | Mexico       |
+| Guillermo | Mexico       |
+| Jodie     | USA          |
+| Peter     | New Zealand  |
+| Ava       | USA          |
+| Patty     | USA          |
+| Haifaa    | Saudi Arabia |
+| Rob       | USA          |
++-----------+--------------+
+11 rows in set (0.000 sec)
+
+MariaDB [movie_show]> SELECT m.title AS Film, m.year_released AS Year
+    -> FROM movies m;
++-----------------------------------------------+------+
+| Film                                          | Year |
++-----------------------------------------------+------+
+| The Incredibles                               | 2004 |
+| Money Monster                                 | 2016 |
+| A Bug's Life                                  | 1998 |
+| Crouching Tiger, Hidden Dragon                | 2000 |
+| Harry Potter and the Prisoner of Azkaban      | 2004 |
+| Little Man Tate                               | 1991 |
+| Roma                                          | 2018 |
+| The Perfect Candidate                         | 2019 |
+| The Shape of Water                            | 2017 |
+| The Lord of the Rings: The Return of the King | 2003 |
+| A Wrinke in Time                              | 2018 |
+| Wonder Woman                                  | 2017 |
+| Ratatouille                                   | 2007 |
+| Mary Shelley                                  | 2017 |
+| Selma                                         | 2014 |
+| The Princess Bride                            | 1987 |
++-----------------------------------------------+------+
+16 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT m.title FROM movies m
+    -> JOIN directors d ON m.director_id = d.director_id WHERE d.first_name = 'Peter' AND d.last_name = 'Jackson';
++-----------------------------------------------+
+| title                                         |
++-----------------------------------------------+
+| The Lord of the Rings: The Return of the King |
++-----------------------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [movie_show]> ALTER TABLE movies
+    -> ADD earnings DECIMAL(15,2);
+Query OK, 0 rows affected (0.018 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [movie_show]> UPDATE movies
+    -> SET earnings = 100000000 WHERE  movie_id = 1;
+Query OK, 0 rows affected (0.001 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+MariaDB [movie_show]> SELECT title, earnings FROM movies
+    -> ORDER BY earnings DESC;
++-----------------------------------------------+----------+
+| title                                         | earnings |
++-----------------------------------------------+----------+
+| The Incredibles                               |     NULL |
+| Selma                                         |     NULL |
+| Mary Shelley                                  |     NULL |
+| Ratatouille                                   |     NULL |
+| Wonder Woman                                  |     NULL |
+| A Wrinke in Time                              |     NULL |
+| The Lord of the Rings: The Return of the King |     NULL |
+| The Shape of Water                            |     NULL |
+| The Perfect Candidate                         |     NULL |
+| Roma                                          |     NULL |
+| Little Man Tate                               |     NULL |
+| Harry Potter and the Prisoner of Azkaban      |     NULL |
+| Crouching Tiger, Hidden Dragon                |     NULL |
+| A Bug's Life                                  |     NULL |
+| Money Monster                                 |     NULL |
+| The Princess Bride                            |     NULL |
++-----------------------------------------------+----------+
+16 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT title, earnings FROM movies
+    -> WHERE earnings > 50000000;
+Empty set (0.000 sec)
+
+MariaDB [movie_show]> SELECT title FROM movies
+    -> WHERE earnings > 50000000 AND year_released > 2000;
+Empty set (0.001 sec)
+
+MariaDB [movie_show]> SELECT title FROM movies
+    -> WHERE earnings > 50000000 OR year_released < 2000;
++--------------------+
+| title              |
++--------------------+
+| A Bug's Life       |
+| Little Man Tate    |
+| The Princess Bride |
++--------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [movie_show]> SELECT title FROM movies
+    -> WHERE NOT year_released < 2000;
++-----------------------------------------------+
+| title                                         |
++-----------------------------------------------+
+| The Incredibles                               |
+| Money Monster                                 |
+| Crouching Tiger, Hidden Dragon                |
+| Harry Potter and the Prisoner of Azkaban      |
+| Roma                                          |
+| The Perfect Candidate                         |
+| The Shape of Water                            |
+| The Lord of the Rings: The Return of the King |
+| A Wrinke in Time                              |
+| Wonder Woman                                  |
+| Ratatouille                                   |
+| Mary Shelley                                  |
+| Selma                                         |
++-----------------------------------------------+
+13 rows in set (0.001 sec)
+
+MariaDB [movie_show]> 
